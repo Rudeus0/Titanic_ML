@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-
+from sklearn.linear_model import LogisticRegression
 
 def data_load() -> pd.DataFrame:
     titan_tf = pd.read_csv("../data/titanic_clean.csv")
@@ -25,3 +25,12 @@ def transform_and_scaler(titan_df: pd.DataFrame) -> tuple:
     X_test_scaled = scaler.transform(X_test)
     
     return X_train, X_test, y_train, y_test, X_train_scaled, X_test_scaled
+
+
+def train_model(X_train_scaled: np.ndarray, y_train: pd.Series) -> LogisticRegression:
+    model_log = LogisticRegression()
+    model_log.fit(X_train_scaled, y_train)
+    
+    
+    return model_log
+    
