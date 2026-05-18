@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 
 def data_load() -> pd.DataFrame:
     titan_tf = pd.read_csv("../data/titanic_clean.csv")
@@ -31,6 +32,8 @@ def train_model(X_train_scaled: np.ndarray, y_train: pd.Series) -> LogisticRegre
     model_log = LogisticRegression()
     model_log.fit(X_train_scaled, y_train)
     
+    model_rfc = RandomForestClassifier(n_estimators=100, random_state=42)
+    model_rfc.fit(X_train_scaled, y_train)
     
     return model_log
     
