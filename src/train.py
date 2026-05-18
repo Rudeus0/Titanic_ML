@@ -1,5 +1,6 @@
 import pandas as pd 
 import numpy as np 
+from sklearn.model_selection import train_test_split
 
 
 def data_load() -> pd.DataFrame:
@@ -8,3 +9,14 @@ def data_load() -> pd.DataFrame:
     return titan_tf
 
     
+def transformation_features(titan_df: pd.DataFrame) -> tuple:
+    X = titan_df.drop(['Survived', 'Name', 'Ticket', 'PassengerId'], axis=1)
+    y = titan_df['Survived']
+    
+    X = pd.get_dummies(X, columns=['Sex', 'Embarked'], drop_first=True)
+    
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, train_size=0.8, random_state=42
+    )
+    
+    return X, y, X_train, X_test, y_train, y_test
