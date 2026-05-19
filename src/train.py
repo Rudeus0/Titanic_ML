@@ -7,9 +7,9 @@ from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
 
 def data_load() -> pd.DataFrame:
-    titan_tf = pd.read_csv("../data/titanic_clean.csv")
+    titan_df = pd.read_csv("data/titanic_clean.csv")
     
-    return titan_tf
+    return titan_df
 
     
 def transform_and_scaler(titan_df: pd.DataFrame) -> tuple:
@@ -40,5 +40,5 @@ def train_model(X_train_scaled: np.ndarray, y_train: pd.Series) -> LogisticRegre
     model_xgb.fit(X_train_scaled, y_train) 
     
     
-    return model_log
+    return model_log, model_rfc, model_xgb
     
