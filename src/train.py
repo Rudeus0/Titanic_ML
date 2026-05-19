@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 
 def data_load() -> pd.DataFrame:
     titan_tf = pd.read_csv("../data/titanic_clean.csv")
@@ -34,6 +35,10 @@ def train_model(X_train_scaled: np.ndarray, y_train: pd.Series) -> LogisticRegre
     
     model_rfc = RandomForestClassifier(n_estimators=100, random_state=42)
     model_rfc.fit(X_train_scaled, y_train)
+    
+    model_xgb = XGBClassifier(n_estimators=100, random_state=42, eval_metric='logloss')
+    model_xgb.fit(X_train_scaled, y_train) 
+    
     
     return model_log
     
