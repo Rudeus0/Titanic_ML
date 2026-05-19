@@ -1,7 +1,7 @@
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, roc_auc_score
 
 
-def model_evaluate(model_log, model_rfc, model_xgb, X_test_scaled, y_test):
+def evaluate_model(model_log, model_rfc, model_xgb, X_test_scaled, y_test):
     
     y_pred_log = model_log.predict(X_test_scaled)
     
@@ -47,5 +47,4 @@ def model_evaluate(model_log, model_rfc, model_xgb, X_test_scaled, y_test):
 
     roc = roc_auc_score(y_test, model_xgb.predict_proba(X_test_scaled)[:, 1])
     print(f" \n Roc:{roc: .4f} ")
-    
     
