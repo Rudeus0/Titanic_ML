@@ -34,7 +34,7 @@ def evaluate_model(model_log, model_rfc, model_xgb, X_test_scaled, y_test):
     print(f" \n Roc:{roc: .4f} ")
     
     
-    y_pred_xgb = model_rfc.predict(X_test_scaled)
+    y_pred_xgb = model_xgb.predict(X_test_scaled)
 
     acc = accuracy_score(y_test, y_pred_xgb)
     print(f"\n Accuracy:{acc:.4f} \n")
