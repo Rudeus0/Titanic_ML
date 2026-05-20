@@ -29,7 +29,7 @@ def transform_and_scaler(titan_df: pd.DataFrame) -> tuple:
     return X_train, X_test, y_train, y_test, X_train_scaled, X_test_scaled
 
 
-def train_model(X_train_scaled: np.ndarray, y_train: pd.Series) -> LogisticRegression:
+def train_model(X_train_scaled: np.ndarray, y_train: pd.Series) -> tuple:
     model_log = LogisticRegression()
     model_log.fit(X_train_scaled, y_train)
     
