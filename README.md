@@ -85,3 +85,27 @@ evaluate_models()     → accuracy, confusion matrix, classification report, ROC
 **Logistic Regression came very close** — survival patterns in Titanic are largely linear. Sex, Pclass, and Fare are strong predictors that a simple model captures well.
 
 ---
+
+## How to Run
+
+```bash
+git clone https://github.com/Rudeus0/titanic_ml.git
+cd titanic_ml
+
+python -m venv .venv
+.venv\Scripts\activate
+
+pip install -r requirements.txt
+python main.py
+```
+
+---
+
+## Tech Stack
+
+- Python 3.12
+- scikit-learn — Logistic Regression, Random Forest, metrics, preprocessing
+- XGBoost — gradient boosted classifier
+- pandas — data manipulation
+- NumPy — numerical operations
+- Matplotlib + Seaborn — visualisation
