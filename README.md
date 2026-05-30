@@ -123,6 +123,31 @@ Initially `train.py`, `evaluate.py` and `main.py` logic were merged in one file 
 
 ---
 
+## Error Analysis
+
+**Where the model struggles:**
+- 17 survivors predicted as dead — model misses passengers who defied the odds
+- 14 non-survivors predicted as survived — edge cases that don't fit the pattern
+- Children and elderly have less predictable survival — age alone isn't enough
+- 3rd class passengers with high fares confuse the model — rare exception to class pattern
+
+**Why Random Forest wins:**
+- Captures non-linear interactions between features (Sex × Pclass combination)
+- Handles the survival rule "women AND first class" better than a linear boundary
+
+---
+
+## Key Learnings
+
+- Classification needs different metrics than regression — accuracy alone is not enough
+- Confusion matrix shows WHERE the model fails, not just how often
+- Recall matters more than precision when missing positives is costly
+- ROC AUC measures how well the model separates classes regardless of threshold
+- `get_dummies` with `drop_first=True` avoids multicollinearity in encoded features
+- Small datasets (891 rows) — simple models often match complex ones
+
+---
+
 ## How to Run
 
 ```bash
