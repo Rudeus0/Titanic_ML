@@ -23,3 +23,28 @@ Titanic_ML/
 
 ---
 
+## Dataset
+
+- **Source:** Titanic passenger data (reused cleaned CSV from P2 EDA project)
+- **Size:** 891 rows × 12 columns (raw) → 9 features after cleaning
+- **Target:** `Survived` — 0 = did not survive, 1 = survived
+- **Class distribution:** 549 (62%) did not survive, 342 (38%) survived
+
+---
+
+## Features Used
+
+| Feature | Type | Description |
+|---------|------|-------------|
+| `Pclass` | Numeric | Passenger class (1/2/3) |
+| `Age` | Numeric | Passenger age |
+| `SibSp` | Numeric | Siblings/spouses aboard |
+| `Parch` | Numeric | Parents/children aboard |
+| `Fare` | Numeric | Ticket fare |
+| `FamilySize` | Numeric | SibSp + Parch + 1 |
+| `Sex` | Encoded | male=1, female=0 |
+| `Embarked` | Encoded | Port of embarkation |
+
+**Dropped:** `PassengerId`, `Name`, `Ticket` — no predictive value.
+
+---
