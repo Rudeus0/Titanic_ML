@@ -48,3 +48,29 @@ Titanic_ML/
 **Dropped:** `PassengerId`, `Name`, `Ticket` — no predictive value.
 
 ---
+
+## Pipeline Flow
+
+```
+load_data()           → read titanic_clean.csv
+transform_and_scale() → one-hot encode Sex + Embarked, split 80/20, StandardScaler
+train_model()         → Logistic Regression, Random Forest, XGBoost
+evaluate_models()     → accuracy, confusion matrix, classification report, ROC AUC
+```
+
+---
+
+## Key Findings
+
+**Random Forest beat Logistic Regression** — 82.7% vs 81.0% accuracy. On a small dataset like Titanic (891 rows), the difference is small. This is expected — Titanic survival is largely driven by simple rules (women and children first, class matters) which a linear model can already capture well.
+
+**Confusion Matrix Analysis — Best Model (Random Forest):**
+```
+[[91  14]   → 91 correctly predicted NOT survived, 14 false alarms
+ [17  57]]  → 57 correctly predicted survived, 17 missed survivors
+```
+
+**Logistic Regression came very close** — survival patterns in Titanic are largely linear. Sex, Pclass, and Fare are strong predictors that a simple model captures well.
+
+---
+
