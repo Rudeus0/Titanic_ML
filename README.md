@@ -86,6 +86,43 @@ evaluate_models()     → accuracy, confusion matrix, classification report, ROC
 
 ---
 
+## Bugs Encountered and Fixed
+
+### Bug 1 — Wrong variable name in evaluate.py
+```python
+# WRONG — used model_rfc to predict XGBoost results
+y_pred_xgb = model_rfc.predict(X_test_scaled)
+
+# CORRECT
+y_pred_xgb = model_xgb.predict(X_test_scaled)
+```
+XGBoost showed identical results to Random Forest — caused by copy-paste error.
+
+### Bug 2 — Wrong return type hint
+```python
+# WRONG
+def train_model(...) -> LogisticRegression:
+
+# CORRECT
+def train_model(...) -> tuple:
+```
+
+### Bug 3 — All code in one file
+Initially `train.py`, `evaluate.py` and `main.py` logic were merged in one file causing circular imports and silent `exited with code=0` with no output. Fixed by separating into three files with single responsibilities.
+
+---
+
+## What's Different from P5
+
+| Thing | P5 House Price | P6 Titanic |
+|-------|---------------|------------|
+| Problem type | Regression | Classification |
+| Target | Continuous number | Binary 0 or 1 |
+| Metrics | RMSE, R² | Accuracy, F1, ROC AUC |
+| New concept | Feature engineering | Confusion matrix, Recall, Precision |
+
+---
+
 ## How to Run
 
 ```bash
