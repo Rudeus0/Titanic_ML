@@ -4,6 +4,18 @@ Binary classification project predicting Titanic passenger survival using Logist
 
 ---
 
+## Results
+
+| Model | Accuracy | ROC AUC | F1 (Survived) | Recall (Survived) |
+|-------|----------|---------|----------------|-------------------|
+| Logistic Regression | 0.8101 | 0.8817 | 0.76 | 0.74 |
+| **Random Forest** | **0.8268** | **0.8958** | **0.79** | **0.77** |
+| XGBoost | 0.7989 | 0.8754 | 0.75 | 0.74 |
+
+**Winner: Random Forest** — highest on all metrics.
+
+---
+
 ## Project Structure
 
 ```
@@ -73,4 +85,3 @@ evaluate_models()     → accuracy, confusion matrix, classification report, ROC
 **Logistic Regression came very close** — survival patterns in Titanic are largely linear. Sex, Pclass, and Fare are strong predictors that a simple model captures well.
 
 ---
-
